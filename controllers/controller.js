@@ -10,7 +10,7 @@ function show(req, res) {
     const id = parseInt(req.params.id)
     const post = arrayPosts.find(post => post.id === id);
 
-    if (!element) {
+    if (!post) {
 
         res.status(404);
 
