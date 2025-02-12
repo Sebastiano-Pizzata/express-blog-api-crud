@@ -35,3 +35,5 @@ const bacheca = [
         tags: ["Antipasti", "Ricette vegane", "Ricette al forno"]
     },
 ]
+
+module.exports = bacheca;
