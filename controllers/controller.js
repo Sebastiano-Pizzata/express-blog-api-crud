@@ -31,7 +31,20 @@ function show(req, res) {
 
 // store
 function store(req, res) {
-    res.send("Creazione nuovo Post" + req.params.id)
+    const newId = arrayPosts[arrayPosts.length - 1].id + 1;
+
+    const nuovaRicetta = {
+        id: newId,
+        titolo: req.body.titolo,
+        contenuto: req.body.contenuto,
+        image: req.body.image,
+        tags: req.body.tags
+    }
+    arrayPosts.push(nuovaRicetta)
+    console.log(arrayPosts)
+
+    res.status(201);
+    res.json(nuovaRicetta)
 }
 
 // update
