@@ -1,4 +1,4 @@
-const arrayPosts = require("../data/data.js")
+const arrayPosts = require("../data/data.js");
 
 // index
 function index(req, res) {
@@ -39,7 +39,7 @@ function store(req, res) {
         contenuto: req.body.contenuto,
         image: req.body.image,
         tags: req.body.tags
-    }
+    };
     arrayPosts.push(nuovaRicetta)
     console.log(arrayPosts)
 
@@ -49,7 +49,27 @@ function store(req, res) {
 
 // update
 function update(req, res) {
-    res.send("Modifica integrale del Post" + req.params.id)
+    const id = parseInt(req.params.id);
+    const post = arrayPosts.find(element => element.id === id);
+
+    if (!post) {
+        res.status(404);
+
+        return res.json({
+            status: 404,
+            error: "Not Found",
+            message: "Post non trovato"
+        })
+    }
+
+
+    post.titolo = req.body.titolo;
+    post.contenuto = req.body.contenuto;
+    post.image = req.body.image;
+    post.tags = req.body.tags;
+
+    console.log(arrayPosts)
+    res.json(post)
 }
 
 function patch(req, res) {
