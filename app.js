@@ -10,7 +10,7 @@ app.use(express.json());
 
 app.use(errorsHandler);
 
-app.use(errorNotFound);
+
 
 app.use(express.static("public"));
 
@@ -19,6 +19,8 @@ app.get("/", (req, res) => {
 })
 
 app.use("/posts", postsRouter);
+
+app.use(errorNotFound);
 
 app.listen(port, () => {
     console.log(`server ${port}`)
